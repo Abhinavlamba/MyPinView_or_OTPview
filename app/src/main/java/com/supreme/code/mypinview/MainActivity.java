@@ -8,7 +8,7 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText et1,et2,et3,et4;
+    EditText et1,et2,et3,et4,et5,et6;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +19,8 @@ public class MainActivity extends AppCompatActivity {
         et2 = findViewById(R.id.et2);
         et3 = findViewById(R.id.et3);
         et4 = findViewById(R.id.et4);
+        et5 = findViewById(R.id.et5);
+        et6 = findViewById(R.id.et6);
 
         et1.addTextChangedListener(new TextWatcher() {
             @Override
@@ -68,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         et3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -93,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         et4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -109,8 +109,7 @@ public class MainActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
                 if(s.length()==1)
                 {
-                    //et4.requestFocus();
-                    et4.clearFocus();
+                    et5.requestFocus();
                 }
                 else if(s.length()==0)
                 {
@@ -119,7 +118,52 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        et5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
+            }
 
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()==1)
+                {
+                    et6.requestFocus();
+                }
+                else if(s.length()==0)
+                {
+                    et4.requestFocus();
+                }
+            }
+        });
+
+        et6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if(s.length()==1)
+                {
+                    et6.clearFocus();
+                }
+                else if(s.length()==0)
+                {
+                    et5.requestFocus();
+                }
+            }
+        });
     }
 }
